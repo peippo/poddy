@@ -1,0 +1,29 @@
+<script lang="ts">
+	const base = import.meta.env.VITE_API_BASE_URL;
+
+	async function fetchTrending() {
+		const response = await fetch(`http://localhost:8000/trending/`);
+		const data = await response.json();
+
+		if (response.ok) {
+			return data;
+		} else {
+			throw new Error(data);
+		}
+	}
+
+	const promise = fetchTrending();
+</script>
+
+<h1>Trending podcasts</h1>
+
+{#await promise}
+	<p>Fetching trending...</p>
+{:then { feeds }}
+	{#each feeds as feed}
+		<div class="podcast">
+			<h2>{feed.title}</h2>
+			<p>{feed.description}</p>
+		</div>
+	{/each}
+{/await}
