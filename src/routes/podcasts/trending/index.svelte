@@ -25,7 +25,7 @@
 {#if feeds}
 	{#each feeds as feed}
 		<div class="podcast">
-			<h2><a href="podcast://{feed.url}">{feed.title}</a> ({feed.author})</h2>
+			<h2><a href="/episodes/{feed.id}">{feed.title}</a> ({feed.author})</h2>
 			<p>{truncateString(feed.description, 100)}</p>
 		</div>
 	{/each}
