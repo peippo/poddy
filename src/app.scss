@@ -1,1 +1,20 @@
-/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Miriam Libre', sans-serif;
+	background-color: #1b1c21;
+	color: #b7bacc;
+	margin: 4rem;
+}
+
+a {
+	color: #ff7dc4;
+}
