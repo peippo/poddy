@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { selectedPodcastId } from '$lib/store';
 	import PodcastRowLoader from '$lib/components/podcastRowLoader.svelte';
+	import Categories from '$lib/components/categories.svelte';
 
 	async function fetchDetails() {
 		const response = await fetch(`/podcasts/details/${$selectedPodcastId}`);
@@ -37,6 +38,8 @@
 			</header>
 
 			<p>{feed.description}</p>
+
+			<Categories categories={feed.categories} />
 		</div>
 	</article>
 {/await}
@@ -45,7 +48,10 @@
 	article {
 		display: flex;
 		position: relative;
-		border-top: 1px solid var(--color-dark-gray);
+		border-top: 1px solid var(--color-pink);
+		box-shadow: 0 0 30px rgb(0 0 0 / 50%);
+		z-index: 5;
+		background-color: #212329;
 	}
 
 	header {
@@ -69,7 +75,7 @@
 	}
 
 	.content {
-		padding: 1rem 2rem;
+		padding: 2rem;
 		width: 100%;
 	}
 

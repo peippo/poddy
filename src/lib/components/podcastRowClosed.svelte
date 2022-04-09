@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { selectedPodcastId } from '$lib/store';
 
 	export let feed;
