@@ -12,7 +12,10 @@
 </script>
 
 <script>
-	import { truncateString } from '$lib/utils';
+	import { selectedPodcastId } from '$lib/store';
+
+	import PodcastRowOpen from '$lib/components/podcastRowOpen.svelte';
+	import PodcastRowClosed from '$lib/components/podcastRowClosed.svelte';
 
 	export let data;
 	$: feeds = data?.feeds;
@@ -24,9 +27,10 @@
 
 {#if feeds}
 	{#each feeds as feed}
-		<div class="podcast">
-			<h2><a href="/episodes/{feed.id}">{feed.title}</a> ({feed.author})</h2>
-			<p>{truncateString(feed.description, 100)}</p>
-		</div>
+		{#if feed.id === $selectedPodcastId}
+			<PodcastRowOpen />
+		{:else}
+			<PodcastRowClosed {feed} />
+		{/if}
 	{/each}
 {/if}
