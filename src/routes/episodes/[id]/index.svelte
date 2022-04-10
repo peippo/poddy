@@ -21,33 +21,29 @@
 	export let data;
 	export let title;
 	$: items = data?.items;
-
-	$: console.log(data);
 </script>
 
 <h1>{title} / Episodes</h1>
 
 {#if items}
-	<div class="grid">
-		{#each items as item}
-			<div class="episode">
-				<div class="details-row">
-					{#if item.episode}
-						Episode #{item.episode}
-					{/if}
-					<p class="published">Published on {item.datePublishedPretty}</p>
-				</div>
-				<h2>
-					{item.title}
-					{#if item.duration > 0}<span class="time">[{formatSeconds(item.duration)}]</span>{/if}
-				</h2>
-				<div class="columns">
-					<img src={item.image} alt="" />
-					<p class="description">{stripTags(item.description)}</p>
-				</div>
+	{#each items as item}
+		<div class="episode">
+			<div class="details-row">
+				{#if item.episode}
+					Episode #{item.episode}
+				{/if}
+				<p class="published">Published on {item.datePublishedPretty}</p>
 			</div>
-		{/each}
-	</div>
+			<h2>
+				{item.title}
+				{#if item.duration > 0}<span class="time">[{formatSeconds(item.duration)}]</span>{/if}
+			</h2>
+			<div class="columns">
+				<img src={item.image} alt="" />
+				<p class="description">{stripTags(item.description)}</p>
+			</div>
+		</div>
+	{/each}
 {/if}
 
 <style lang="scss">
