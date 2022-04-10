@@ -1,5 +1,7 @@
 <script>
 	import '../app.scss';
+	import { activeEpisode } from '$lib/store';
+	import Player from '$lib/components/player.svelte';
 </script>
 
 <header>
@@ -10,6 +12,10 @@
 </header>
 
 <slot />
+
+{#if $activeEpisode}
+	<Player episode={$activeEpisode} />
+{/if}
 
 <style lang="scss">
 	header {
