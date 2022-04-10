@@ -1,8 +1,10 @@
 :root {
+	--font-family: 'Miriam Libre', sans-serif;
 	--color-black: #1b1c21;
 	--color-dark-gray: #363639;
 	--color-gray: #8b8ea6;
 	--color-light-gray: #c3c6d9;
+	--color-blue-gray: #8593a6;
 	--color-pink: #ff7dc4;
 	--podcast-row-height: 100px;
 }
@@ -18,7 +20,7 @@ html {
 }
 
 body {
-	font-family: 'Miriam Libre', sans-serif;
+	font-family: var(--font-family);
 	background-color: var(--color-black);
 	color: var(--color-light-gray);
 	margin: 0;
