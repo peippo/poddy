@@ -6,8 +6,10 @@
 
 <header>
 	<div class="logo">
-		<h1>poddy</h1>
-		<span class="logo-sub">Trending<br /> podcasts</span>
+		<a href="/">
+			<h1>poddy</h1>
+			<span class="logo-sub">Trending<br /> podcasts</span>
+		</a>
 	</div>
 </header>
 
@@ -35,14 +37,24 @@
 		z-index: 10;
 	}
 
-	.logo {
+	a {
 		display: flex;
 		align-items: center;
+		text-decoration: none;
+
+		&:hover {
+			h1 {
+				text-decoration-color: var(--color-pink);
+				transition: all 0.2s ease-in-out;
+			}
+		}
 	}
 
 	h1 {
 		margin: 0;
 		color: #fff;
+		text-decoration: underline;
+		text-decoration-color: var(--color-light-gray);
 	}
 
 	.logo-sub {
