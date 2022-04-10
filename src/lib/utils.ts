@@ -7,3 +7,7 @@ export const formatSeconds = (seconds: number) => {
 		? new Date(1000 * seconds).toISOString().slice(11, 19)
 		: new Date(1000 * seconds).toISOString().slice(14, 19);
 };
+
+export const stripTags = (string: string) => {
+	return string.replace(/(<([^>]+)>)/gi, '');
+};

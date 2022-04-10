@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { selectedPodcastId } from '$lib/store';
-	import { formatSeconds } from '$lib/utils';
+	import { formatSeconds, stripTags } from '$lib/utils';
 	import PodcastRowLoader from '$lib/components/podcastRowLoader.svelte';
 	import Categories from '$lib/components/categories.svelte';
 
@@ -39,15 +39,19 @@
 
 			<div class="columns">
 				<div>
-					<p>{details.description}</p>
+					<p>{stripTags(details.description)}</p>
 					<h3>Latest episodes</h3>
 					<ul>
 						{#each episodes as episode}
 							<li>
-								{episode.title} <span class="time">[{formatSeconds(episode.duration)}]</span>
+								{episode.title}
+								{#if episode.duration > 0}
+									<span class="time">[{formatSeconds(episode.duration)}]</span>
+								{/if}
 							</li>
 						{/each}
 					</ul>
+					<a href="/episodes/{details.id}?title={details.title}">View all episodes</a>
 				</div>
 				<div class="categories">
 					<Categories categories={details.categories} />
@@ -103,7 +107,7 @@
 		flex-direction: column;
 		gap: 0.5rem;
 		list-style-type: none;
-		margin: 0;
+		margin: 0 0 2rem 0;
 		padding: 0;
 	}
 
