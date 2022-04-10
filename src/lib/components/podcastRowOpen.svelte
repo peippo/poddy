@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { selectedPodcastId } from '$lib/store';
+	import { formatSeconds } from '$lib/utils';
 	import PodcastRowLoader from '$lib/components/podcastRowLoader.svelte';
 	import Categories from '$lib/components/categories.svelte';
 
@@ -8,7 +9,6 @@
 		const data = await response.json();
 
 		if (response.ok) {
-			console.log('Podcast details: ', data);
 			return data;
 		} else {
 			throw new Error(data);
@@ -20,7 +20,7 @@
 
 {#await promise}
 	<PodcastRowLoader />
-{:then { feed }}
+{:then { details, episodes }}
 	<article>
 		<button on:click={() => ($selectedPodcastId = null)}>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32">
@@ -33,13 +33,26 @@
 		</button>
 		<div class="content">
 			<header>
-				<h2>{feed.title}</h2>
-				<span class="author">{feed.author}</span>
+				<h2>{details.title}</h2>
+				<span class="author">{details.author}</span>
 			</header>
 
-			<p>{feed.description}</p>
-
-			<Categories categories={feed.categories} />
+			<div class="columns">
+				<div>
+					<p>{details.description}</p>
+					<h3>Latest episodes</h3>
+					<ul>
+						{#each episodes as episode}
+							<li>
+								{episode.title} <span class="time">[{formatSeconds(episode.duration)}]</span>
+							</li>
+						{/each}
+					</ul>
+				</div>
+				<div class="categories">
+					<Categories categories={details.categories} />
+				</div>
+			</div>
 		</div>
 	</article>
 {/await}
@@ -77,6 +90,29 @@
 	.content {
 		padding: 2rem;
 		width: 100%;
+	}
+
+	.columns {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.time {
+		color: var(--color-gray);
+	}
+
+	.categories {
+		min-width: 300px;
 	}
 
 	h2 {

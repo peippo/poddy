@@ -3,5 +3,7 @@ export const truncateString = (string: string, limit: number) => {
 };
 
 export const formatSeconds = (seconds: number) => {
-	return new Date(1000 * seconds).toISOString().substr(11, 8);
+	return seconds >= 3600
+		? new Date(1000 * seconds).toISOString().slice(11, 19)
+		: new Date(1000 * seconds).toISOString().slice(14, 19);
 };

@@ -18,9 +18,10 @@
 	ul {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: flex-end;
 		gap: 0.5rem;
 		list-style-type: none;
-		margin: 1rem 0 0 0;
+		margin: 0;
 		padding: 0;
 	}
 
