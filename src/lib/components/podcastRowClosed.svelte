@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { selectedPodcastId } from '$lib/store';
+	import { stripTags } from '$lib/utils';
 
 	export let feed;
 </script>
@@ -20,7 +21,7 @@
 			<span class="author">{feed.author}</span>
 		</header>
 
-		<p>{feed.description}</p>
+		<p>{stripTags(feed.description)}</p>
 	</div>
 </article>
 
