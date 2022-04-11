@@ -44,8 +44,7 @@
 
 		&:hover {
 			h1 {
-				text-decoration-color: var(--color-pink);
-				transition: all 0.2s ease-in-out;
+				text-decoration-color: var(--color-light-gray);
 			}
 		}
 	}
@@ -54,7 +53,8 @@
 		margin: 0;
 		color: #fff;
 		text-decoration: underline;
-		text-decoration-color: var(--color-light-gray);
+		text-decoration-color: var(--color-pink);
+		transition: all 0.2s ease-in-out;
 	}
 
 	.logo-sub {

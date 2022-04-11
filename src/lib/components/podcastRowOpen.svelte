@@ -35,7 +35,9 @@
 		<div class="content">
 			<header>
 				<h2>{details.title}</h2>
-				<span class="author">{details.author}</span>
+				{#if details.author && details.author !== details.title}
+					<span class="author">{details.author}</span>
+				{/if}
 			</header>
 
 			<div class="columns">
@@ -61,10 +63,12 @@
 										/>
 									</svg>
 								</button>
-								{episode.title}
-								{#if episode.duration > 0}
-									<span class="time">[{formatSeconds(episode.duration)}]</span>
-								{/if}
+								<p>
+									{episode.title}
+									{#if episode.duration > 0}
+										<span class="time">[{formatSeconds(episode.duration)}]</span>
+									{/if}
+								</p>
 							</li>
 						{/each}
 					</ul>
@@ -81,26 +85,40 @@
 <style lang="scss">
 	article {
 		display: flex;
+		flex-direction: row-reverse;
 		position: relative;
 		border-top: 1px solid var(--color-pink);
 		box-shadow: 0 0 30px rgb(0 0 0 / 50%);
 		z-index: 5;
 		background-color: #212329;
+
+		@media (min-width: $medium-breakpoint) {
+			flex-direction: row;
+		}
 	}
 
 	header {
 		display: flex;
-		align-items: center;
+		flex-direction: column-reverse;
+		align-items: flex-start;
 		justify-content: space-between;
+		gap: 1rem;
+
+		@media (min-width: $medium-breakpoint) {
+			flex-direction: row;
+		}
 	}
 
 	.close-button {
 		appearance: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background: var(--color-dark-gray);
 		color: var(--color-light-gray);
 		border: 0;
-		padding: 1rem;
 		transition: color 0.2s ease-in-out;
+		width: var(--row-button-width);
 
 		&:hover {
 			color: #fff;
@@ -113,10 +131,19 @@
 		width: 100%;
 	}
 
+	.author {
+		text-align: right;
+	}
+
 	.columns {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		gap: 2rem;
+
+		@media (min-width: $medium-breakpoint) {
+			flex-direction: row;
+		}
 	}
 
 	ul {

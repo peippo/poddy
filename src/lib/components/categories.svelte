@@ -14,15 +14,18 @@
 	{/each}
 </ul>
 
-<style>
+<style lang="scss">
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: flex-end;
 		gap: 0.5rem;
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+
+		@media (min-width: $medium-breakpoint) {
+			justify-content: flex-end;
+		}
 	}
 
 	span {

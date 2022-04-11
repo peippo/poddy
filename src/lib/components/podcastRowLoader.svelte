@@ -24,6 +24,11 @@
 		border-top: 1px solid var(--color-dark-gray);
 		height: var(--podcast-row-height);
 		overflow: hidden;
+		flex-direction: row-reverse;
+
+		@media (min-width: $medium-breakpoint) {
+			flex-direction: row;
+		}
 	}
 
 	.header {
@@ -38,7 +43,7 @@
 		align-items: center;
 		background: var(--color-dark-gray);
 		color: var(--color-light-gray);
-		padding: 1rem;
+		width: var(--row-button-width);
 
 		svg {
 			animation: spin 0.75s infinite;

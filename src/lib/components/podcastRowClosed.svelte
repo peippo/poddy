@@ -28,24 +28,26 @@
 <style lang="scss">
 	article {
 		display: flex;
+		flex-direction: row-reverse;
 		position: relative;
 		border-top: 1px solid var(--color-dark-gray);
 		height: var(--podcast-row-height);
 		overflow: hidden;
-	}
 
-	header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		@media (min-width: $medium-breakpoint) {
+			flex-direction: row;
+		}
 	}
 
 	button {
 		appearance: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background: var(--color-pink);
 		border: 0;
-		padding: 1rem;
 		color: #fff;
+		width: var(--row-button-width);
 		transition: color 0.2s ease-in-out;
 
 		&:hover {
@@ -57,7 +59,7 @@
 	.content {
 		position: relative;
 		padding: 1rem 2rem;
-		width: 100%;
+		width: calc(100% - var(--row-button-width));
 
 		&:after {
 			content: '';
@@ -70,9 +72,39 @@
 		}
 	}
 
+	header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	h2,
+	.author {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
 	h2 {
 		margin: 0;
 		color: var(--color-pink);
+		flex: 2 1 auto;
+		font-size: 1.3rem;
+
+		@media (min-width: $medium-breakpoint) {
+			font-size: 1.5rem;
+		}
+	}
+
+	.author {
+		text-align: right;
+		flex: 1 2 auto;
+		min-width: 100px;
+
+		@media (max-width: $medium-breakpoint) {
+			display: none;
+		}
 	}
 
 	p {
