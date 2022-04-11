@@ -90,11 +90,6 @@
 		margin: 0;
 		color: var(--color-pink);
 		flex: 2 1 auto;
-		font-size: 1.3rem;
-
-		@media (min-width: $medium-breakpoint) {
-			font-size: 1.5rem;
-		}
 	}
 
 	.author {

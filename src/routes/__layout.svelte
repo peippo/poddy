@@ -55,6 +55,7 @@
 		text-decoration: underline;
 		text-decoration-color: var(--color-pink);
 		transition: all 0.2s ease-in-out;
+		font-size: 1.9rem;
 	}
 
 	.logo-sub {

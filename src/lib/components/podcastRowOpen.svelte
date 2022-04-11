@@ -128,7 +128,7 @@
 
 	.content {
 		padding: 2rem;
-		width: 100%;
+		width: calc(100% - var(--row-button-width));
 	}
 
 	.author {
