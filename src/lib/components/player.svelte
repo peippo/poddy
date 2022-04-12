@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
-	import { activeEpisode } from '$lib/store';
+	import { activeEpisode, isPlaying } from '$lib/store';
 
-	export const handlePlayClick = (podcastTitle: string, episode) => {
+	export const handleLoadEpisode = (podcastTitle: string, episode) => {
 		activeEpisode.set({
 			podcastTitle: podcastTitle,
+			id: episode.id,
 			episodeTitle: episode.title,
 			duration: episode.duration,
 			url: episode.enclosureUrl
@@ -13,9 +14,11 @@
 
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
-
 	export let episode;
 
+	let paused: boolean;
+
+	$: paused = !$isPlaying;
 	$: status = 'Loading';
 	$: playing = status === 'Playing';
 </script>
@@ -33,9 +36,19 @@
 			{episode.podcastTitle}: <span class="episode-title">{episode.episodeTitle}</span>
 		</h2>
 		<audio
-			on:play={() => (status = 'Playing')}
-			on:pause={() => (status = 'Paused')}
-			on:ended={() => (status = 'Ended')}
+			bind:paused
+			on:play={() => {
+				$isPlaying = true;
+				status = 'Playing';
+			}}
+			on:pause={() => {
+				$isPlaying = false;
+				status = 'Paused';
+			}}
+			on:ended={() => {
+				$isPlaying = false;
+				status = 'Ended';
+			}}
 			controls
 			autoplay
 			src={episode.url}
