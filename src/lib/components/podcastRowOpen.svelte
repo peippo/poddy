@@ -4,7 +4,7 @@
 	import PodcastRowLoader from '$lib/components/podcastRowLoader.svelte';
 	import Categories from '$lib/components/categories.svelte';
 	import { handleLoadEpisode } from '$lib/components/player.svelte';
-	import { playIcon, pauseIcon } from '$lib/icons';
+	import { playIcon, pauseIcon, minusIcon } from '$lib/icons';
 
 	async function fetchDetails() {
 		const response = await fetch(`/podcasts/details/${$selectedPodcastId}`);
@@ -25,12 +25,7 @@
 {:then { details, episodes }}
 	<article>
 		<button class="close-button" on:click={() => ($selectedPodcastId = null)}>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32">
-				<path
-					fill="currentColor"
-					d="M400 288h-352c-17.69 0-32-14.32-32-32.01s14.31-31.99 32-31.99h352c17.69 0 32 14.3 32 31.99S417.7 288 400 288z"
-				/>
-			</svg>
+			{@html minusIcon}
 			<span class="screen-reader-text">Close details</span>
 		</button>
 		<div class="content">
