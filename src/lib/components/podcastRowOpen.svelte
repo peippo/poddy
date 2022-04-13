@@ -72,7 +72,7 @@
 							</li>
 						{/each}
 					</ul>
-					<a href="/episodes/{details.id}?title={details.title}">View all episodes</a>
+					<a href="/episodes/{details.id}">View all episodes</a>
 				</div>
 				<div class="categories">
 					<Categories categories={details.categories} />
