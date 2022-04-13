@@ -117,6 +117,7 @@
 		background: var(--color-dark-gray);
 		color: var(--color-light-gray);
 		border: 0;
+		margin: 0;
 		transition: color 0.2s ease-in-out;
 		width: var(--row-button-width);
 

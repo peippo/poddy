@@ -45,6 +45,7 @@
 		align-items: center;
 		background: var(--color-pink);
 		border: 0;
+		margin: 0;
 		color: #fff;
 		width: var(--row-button-width);
 		transition: color 0.2s ease-in-out;
