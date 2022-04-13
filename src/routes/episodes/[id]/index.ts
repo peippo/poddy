@@ -9,6 +9,6 @@ export async function get({ params }) {
 	]);
 
 	return {
-		body: { podcast: podcast.feed, episodes: episodes.items }
+		body: { podcast: podcast, episodes: episodes }
 	};
 }

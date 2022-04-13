@@ -11,16 +11,15 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
+	import type { TrendingPodcasts } from 'src/types/podcastIndex.type';
 	import { selectedPodcastId } from '$lib/store';
 
 	import PodcastRowOpen from '$lib/components/podcastRowOpen.svelte';
 	import PodcastRowClosed from '$lib/components/podcastRowClosed.svelte';
 
-	export let data;
+	export let data: TrendingPodcasts;
 	$: feeds = data?.feeds;
-
-	$: console.log(feeds);
 </script>
 
 {#if feeds}

@@ -13,13 +13,19 @@
 	}
 </script>
 
-<script>
+<script lang="ts">
 	import { backIcon } from '$lib/icons';
 	import EpisodeDetails from '$lib/components/episodeDetails.svelte';
+	import type { EpisodesByFeedId, PodcastsByFeedId } from 'src/types/podcastIndex.type';
 
-	export let data;
-	$: podcast = data?.podcast;
-	$: episodes = data?.episodes;
+	interface PodcastDetailsWithEpisodes {
+		podcast: PodcastsByFeedId;
+		episodes: EpisodesByFeedId;
+	}
+
+	export let data: PodcastDetailsWithEpisodes;
+	$: podcast = data?.podcast.feed;
+	$: episodes = data?.episodes.items;
 </script>
 
 <div class="back-bar">
