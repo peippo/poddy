@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let categories;
+	interface Categories {
+		[id: number]: string;
+	}
+
+	export let categories: Categories;
 
 	const categoryNames = Object.values(categories).map((category) => category);
 </script>

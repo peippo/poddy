@@ -2,8 +2,11 @@
 	import { selectedPodcastId } from '$lib/store';
 	import { stripTags } from '$lib/utils';
 	import { plusIcon } from '$lib/icons';
+	import type { TrendingPodcasts } from 'src/types/podcastIndex.type';
 
-	export let feed;
+	type Feed = TrendingPodcasts['feeds'][0];
+
+	export let feed: Feed;
 </script>
 
 <article>

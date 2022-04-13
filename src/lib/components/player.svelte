@@ -1,7 +1,10 @@
 <script context="module" lang="ts">
 	import { activeEpisode, isPlaying } from '$lib/store';
+	import type { EpisodesByFeedId } from 'src/types/podcastIndex.type';
 
-	export const handleLoadEpisode = (podcastTitle: string, episode) => {
+	type Episode = EpisodesByFeedId['items'][0];
+
+	export const handleLoadEpisode = (podcastTitle: string, episode: Episode) => {
 		activeEpisode.set({
 			podcastTitle: podcastTitle,
 			id: episode.id,
@@ -15,7 +18,16 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { closeIcon } from '$lib/icons';
-	export let episode;
+
+	interface ActiveEpisode {
+		podcastTitle: string;
+		id: number;
+		episodeTitle: string;
+		duration: number;
+		url: string;
+	}
+
+	export let episode: ActiveEpisode;
 
 	let paused: boolean;
 
