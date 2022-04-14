@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
+	import { fly } from 'svelte/transition';
 	import { activeEpisode, isPlaying } from '$lib/store';
 	import { truncateString, formatSeconds, stripTags } from '$lib/utils';
 	import { handleLoadEpisode } from '$lib/components/player.svelte';
 	import { playIcon, pauseIcon } from '$lib/icons';
+	import type { Episode } from 'src/types/podcastIndex.type';
 
-	export let podcastTitle;
-	export let episode;
+	export let index: number;
+	export let podcastTitle: string;
+	export let episode: Episode;
 
 	$: description = stripTags(episode.description);
 	$: descriptionExpanded = false;
@@ -14,7 +17,7 @@
 	}
 </script>
 
-<div class="episode">
+<div class="episode" in:fly={{ y: -15, duration: 500, delay: index * 150 }}>
 	<div class="details-row">
 		{#if episode.episode}
 			Episode #{episode.episode}

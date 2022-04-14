@@ -1,8 +1,6 @@
 <script context="module" lang="ts">
 	import { activeEpisode, isPlaying } from '$lib/store';
-	import type { EpisodesByFeedId } from 'src/types/podcastIndex.type';
-
-	type Episode = EpisodesByFeedId['items'][0];
+	import type { Episode } from 'src/types/podcastIndex.type';
 
 	export const handleLoadEpisode = (podcastTitle: string, episode: Episode) => {
 		activeEpisode.set({

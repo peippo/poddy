@@ -37,8 +37,8 @@
 </div>
 
 {#if episodes}
-	{#each episodes as episode}
-		<EpisodeDetails podcastTitle={podcast.title} {episode} />
+	{#each episodes as episode, index}
+		<EpisodeDetails {index} podcastTitle={podcast.title} {episode} />
 	{/each}
 {/if}
 
@@ -52,6 +52,7 @@
 		align-items: center;
 		background-color: #161617;
 		border-bottom: 1px solid var(--color-dark-gray);
+		z-index: 5;
 	}
 
 	.back-link {

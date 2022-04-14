@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
 	import { activeEpisode, selectedPodcastId, isPlaying } from '$lib/store';
 	import { formatSeconds, stripTags } from '$lib/utils';
 	import PodcastRowLoader from '$lib/components/podcastRowLoader.svelte';
@@ -29,7 +30,7 @@
 			<span class="screen-reader-text">Close details</span>
 		</button>
 		<div class="content">
-			<header>
+			<header in:fly|local={{ y: -15, duration: 500 }}>
 				<h2>{details.title}</h2>
 				{#if details.author && details.author !== details.title}
 					<span class="author">{details.author}</span>
@@ -38,43 +39,46 @@
 
 			<div class="columns">
 				<div>
-					<p>{stripTags(details.description)}</p>
-					<h3>Latest episodes</h3>
-					<ul>
-						{#each episodes as episode}
-							<li class:active={$activeEpisode?.id === episode.id}>
-								{#if $activeEpisode?.id !== episode.id}
-									<button
-										class="play-button"
-										on:click={() => handleLoadEpisode(details.title, episode)}
-									>
-										{@html playIcon}
-										<span class="screen-reader-text">Play episode {episode.title}</span>
-									</button>
-								{:else}
-									<button class="play-button" on:click={() => ($isPlaying = !$isPlaying)}>
-										{#if $isPlaying}
-											{@html pauseIcon}
-											<span class="screen-reader-text">Pause playback</span>
-										{:else}
+					<p in:fly|local={{ y: -15, duration: 500 }}>{stripTags(details.description)}</p>
+
+					<div in:fly|local={{ y: -15, duration: 500, delay: 200 }}>
+						<h3>Latest episodes</h3>
+						<ul>
+							{#each episodes as episode}
+								<li class:active={$activeEpisode?.id === episode.id}>
+									{#if $activeEpisode?.id !== episode.id}
+										<button
+											class="play-button"
+											on:click={() => handleLoadEpisode(details.title, episode)}
+										>
 											{@html playIcon}
 											<span class="screen-reader-text">Play episode {episode.title}</span>
-										{/if}
-									</button>
-								{/if}
-
-								<p>
-									<span class="title">{episode.title}</span>
-									{#if episode.duration > 0}
-										<span class="time">[{formatSeconds(episode.duration)}]</span>
+										</button>
+									{:else}
+										<button class="play-button" on:click={() => ($isPlaying = !$isPlaying)}>
+											{#if $isPlaying}
+												{@html pauseIcon}
+												<span class="screen-reader-text">Pause playback</span>
+											{:else}
+												{@html playIcon}
+												<span class="screen-reader-text">Play episode {episode.title}</span>
+											{/if}
+										</button>
 									{/if}
-								</p>
-							</li>
-						{/each}
-					</ul>
-					<a href="/episodes/{details.id}">View all episodes</a>
+
+									<p>
+										<span class="title">{episode.title}</span>
+										{#if episode.duration > 0}
+											<span class="time">[{formatSeconds(episode.duration)}]</span>
+										{/if}
+									</p>
+								</li>
+							{/each}
+						</ul>
+						<a href="/episodes/{details.id}">View all episodes</a>
+					</div>
 				</div>
-				<div class="categories">
+				<div class="categories" in:fly|local={{ y: -15, duration: 500, delay: 400 }}>
 					<Categories categories={details.categories} />
 				</div>
 			</div>

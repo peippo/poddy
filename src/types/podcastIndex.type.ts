@@ -142,3 +142,5 @@ export interface EpisodesByFeedId {
 	};
 	count: number;
 }
+
+export type Episode = EpisodesByFeedId['items'][0];
