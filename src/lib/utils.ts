@@ -9,5 +9,5 @@ export const formatSeconds = (seconds: number) => {
 };
 
 export const stripTags = (string: string) => {
-	return string.replace(/(<([^>]+)>)/gi, '');
+	return string.replace(/(<([^>]+)>)/gi, ' ').replace(/\s{2,}/g, ' ');
 };
