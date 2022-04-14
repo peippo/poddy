@@ -2,11 +2,11 @@ export interface TrendingPodcasts {
 	status: true | false;
 	feeds: {
 		id: number;
-		url: URL;
+		url: string;
 		title: string;
 		description: string;
 		author: string;
-		image: URL;
+		image: string;
 		newestItemPublishedTime: number;
 		itunesId: number;
 		trendScore: number;
@@ -30,14 +30,14 @@ export interface PodcastsByFeedId {
 		id: number;
 		podcastGuid: string;
 		title: string;
-		url: URL;
-		originalUrl: URL;
-		link: URL;
+		url: string;
+		originalUrl: string;
+		link: string;
 		description: string;
 		author: string;
 		ownerName: string;
-		image: URL;
-		artwork: URL;
+		image: string;
+		artwork: string;
 		lastUpdateTime: number;
 		lastCrawlTime: number;
 		lastParseTime: number;
@@ -73,7 +73,7 @@ export interface PodcastsByFeedId {
 			}[];
 		};
 		funding: {
-			url: URL;
+			url: string;
 			message: string;
 		};
 	};
@@ -85,13 +85,13 @@ export interface EpisodesByFeedId {
 	items: {
 		id: number;
 		title: string;
-		link: URL;
+		link: string;
 		description: string;
 		guid: string;
 		datePublished: number;
 		datePublishedPretty: string;
 		dateCrawled: number;
-		enclosureUrl: URL;
+		enclosureUrl: string;
 		enclosureType: string;
 		enclosureLength: number;
 		duration: number;
@@ -99,14 +99,14 @@ export interface EpisodesByFeedId {
 		episode: number;
 		episodeType: 'full' | 'trailer' | 'bonus';
 		season: number;
-		image: URL;
+		image: string;
 		feedItunesId: number;
-		feedImage: URL;
+		feedImage: string;
 		feedId: number;
 		feedLanguage: string;
-		chaptersUrl: URL;
+		chaptersUrl: string;
 		transcripts: {
-			url: URL;
+			url: string;
 			type:
 				| 'application/json'
 				| 'application/srt'
