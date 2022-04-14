@@ -2,11 +2,13 @@
 	import '../app.scss';
 	import { activeEpisode } from '$lib/store';
 	import Player from '$lib/components/player.svelte';
+	import { logo } from '$lib/icons';
 </script>
 
 <header>
 	<div class="logo">
 		<a href="/">
+			{@html logo}
 			<h1>poddy</h1>
 			<span class="logo-sub">Trending<br /> podcasts</span>
 		</a>
@@ -20,6 +22,18 @@
 {/if}
 
 <style lang="scss">
+	.logo {
+		display: flex;
+		align-items: center;
+
+		@media (min-width: $medium-breakpoint) {
+			:global(svg) {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+
 	header {
 		position: relative;
 		display: flex;
@@ -33,7 +47,7 @@
 			var(--color-blue-gray)
 		);
 		color: var(--color-black);
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 0.7rem;
 		z-index: 10;
 	}
 
@@ -50,7 +64,7 @@
 	}
 
 	h1 {
-		margin: 0;
+		margin: 0 0 0 0.5rem;
 		color: #fff;
 		text-decoration: underline;
 		text-decoration-color: var(--color-pink);

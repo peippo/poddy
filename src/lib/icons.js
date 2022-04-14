@@ -1,9 +1,19 @@
+export const logo = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="35" height="35" aria-hidden="true">
+        <path style="fill:#fffffe" d="M1000 500c0-92-74.6-166.7-166.7-166.7a166.7 166.7 0 0 0-196.3-164 166.7 166.7 0 0 0-274 0 166.7 166.7 0 0 0-196.4 164A166.7 166.7 0 0 0 116.4 659a166.7 166.7 0 0 0 224.8 224.8 166.7 166.7 0 0 0 317.8 0A166.7 166.7 0 0 0 883.8 659 166.7 166.7 0 0 0 1000 500z"/>
+        <path style="fill:#ff79c2" d="M772.2 463.5a272.2 272.2 0 1 0-465.8 191.3 194 194 0 1 0 387.2 0 271.3 271.3 0 0 0 78.6-191.3z"/>
+        <path style="fill:#fffffe" d="M853.5 146.4a166.7 166.7 0 0 0-194.6-30 166.7 166.7 0 0 0-317.8 0 166.7 166.7 0 1 0 82.1 198.2 166 166 0 0 0 153.6 0 166.7 166.7 0 1 0 276.8-168.2z"/>
+        <path style="fill:#231f20" d="M620.1 638.4a19.4 19.4 0 1 0-38.7 0c0 3.3-1 81.4-81.4 81.4-78.4 0-81.3-73.1-81.4-81.4a19.4 19.4 0 1 0-38.8 0c0 1.1 1.3 105.7 99.2 118.8v59.6a19.4 19.4 0 1 0 38.8 0v-59.2c101-11.3 102.3-118 102.3-119.2z"/>
+    </svg>
+`;
+
 export const playIcon = `
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
         width="32"
         height="32"
+        aria-hidden="true"
     >
         <path
             fill="currentColor"
@@ -18,6 +28,7 @@ export const pauseIcon = `
         viewBox="0 0 512 512"
         width="32"
         height="32"
+        aria-hidden="true"
     >
         <path
             fill="currentColor"
@@ -27,7 +38,7 @@ export const pauseIcon = `
 `;
 
 export const plusIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32" aria-hidden="true">
         <path
             fill="currentColor"
             d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"
@@ -36,7 +47,7 @@ export const plusIcon = `
 `;
 
 export const minusIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32" aria-hidden="true">
         <path
             fill="currentColor"
             d="M400 288h-352c-17.69 0-32-14.32-32-32.01s14.31-31.99 32-31.99h352c17.69 0 32 14.3 32 31.99S417.7 288 400 288z"
@@ -45,7 +56,7 @@ export const minusIcon = `
 `;
 
 export const loadingIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="32" height="32">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="32" height="32" aria-hidden="true">
         <path
             fill="currentColor"
             d="M256 32C256 14.33 270.3 0 288 0C429.4 0 544 114.6 544 256C544 302.6 531.5 346.4 509.7 384C500.9 399.3 481.3 404.6 465.1 395.7C450.7 386.9 445.5 367.3 454.3 351.1C470.6 323.8 480 291 480 255.1C480 149.1 394 63.1 288 63.1C270.3 63.1 256 49.67 256 31.1V32z"
@@ -54,7 +65,7 @@ export const loadingIcon = `
 `;
 
 export const backIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" aria-hidden="true">
         <path
             fill="currentColor"
             d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM384 288H205.3l49.38 49.38c12.5 12.5 12.5 32.75 0 45.25s-32.75 12.5-45.25 0L105.4 278.6C97.4 270.7 96 260.9 96 256c0-4.883 1.391-14.66 9.398-22.65l103.1-103.1c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L205.3 224H384c17.69 0 32 14.33 32 32S401.7 288 384 288z"
@@ -63,7 +74,7 @@ export const backIcon = `
 `;
 
 export const closeIcon = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32" aria-hidden="true">
         <path
             fill="currentColor"
             d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM175 208.1L222.1 255.1L175 303C165.7 312.4 165.7 327.6 175 336.1C184.4 346.3 199.6 346.3 208.1 336.1L255.1 289.9L303 336.1C312.4 346.3 327.6 346.3 336.1 336.1C346.3 327.6 346.3 312.4 336.1 303L289.9 255.1L336.1 208.1C346.3 199.6 346.3 184.4 336.1 175C327.6 165.7 312.4 165.7 303 175L255.1 222.1L208.1 175C199.6 165.7 184.4 165.7 175 175C165.7 184.4 165.7 199.6 175 208.1V208.1z"
