@@ -4,8 +4,8 @@ export async function get({ params }) {
 	const { id } = params;
 
 	const [podcast, episodes] = await Promise.all([
-		api.get(`/podcasts/byfeedid?id=${id}`),
-		api.get(`/episodes/byfeedid?id=${id}&fulltext=true`)
+		api.get(`podcasts/byfeedid?id=${id}`),
+		api.get(`episodes/byfeedid?id=${id}&fulltext=true`)
 	]);
 
 	return {
