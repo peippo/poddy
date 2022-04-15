@@ -1,7 +1,9 @@
 import crypto from 'crypto';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_KEY = import.meta.env.VITE_API_KEY;
-const API_SECRET = import.meta.env.VITE_API_SECRET;
+import 'dotenv/config';
+
+const API_BASE_URL = process.env.API_BASE_URL;
+const API_KEY = process.env.API_KEY;
+const API_SECRET = process.env.API_SECRET;
 
 const getHeaders = () => {
 	const authDate = Math.floor(Date.now() / 1000);
