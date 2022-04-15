@@ -1,0 +1,18 @@
+{
+	"short_name": "Poddy",
+	"name": "Poddy: Trending podcasts",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "logo_512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"theme_color": "#ff7dc4",
+	"background_color": "#1b1c21",
+	"display": "standalone",
+	"orientation": "portrait",
+	"scope": "/",
+	"description": "Discover and listen to podcasts from the best creators in the world."
+}
