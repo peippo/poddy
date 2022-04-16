@@ -1,10 +1,9 @@
 <script>
 	import '../app.scss';
-	import { activeEpisode, isSettingsOpen } from '$lib/store';
+	import { activeEpisode } from '$lib/store';
 	import { logo, settingsIcon } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
 	import Footer from '$lib/components/footer.svelte';
-	import Settings from '$lib/components/settings.svelte';
 </script>
 
 <header>
@@ -16,14 +15,11 @@
 		</a>
 	</div>
 
-	<button on:click={() => ($isSettingsOpen = !$isSettingsOpen)}>
+	<a class="settings-link" href="/settings">
 		{@html settingsIcon}
-		<span class="button-label">Settings</span>
-	</button>
+		<span>Settings</span>
+	</a>
 </header>
-{#if $isSettingsOpen}
-	<Settings />
-{/if}
 
 <slot />
 
@@ -59,7 +55,7 @@
 			var(--color-blue-gray)
 		);
 		color: var(--color-black);
-		padding: 0.5rem 0.7rem;
+		padding: 0.5rem 1.5rem 0.5rem 0.75rem;
 		z-index: 15;
 	}
 
@@ -92,7 +88,7 @@
 		margin-left: 0.5rem;
 	}
 
-	button {
+	.settings-link {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -124,13 +120,13 @@
 		&:focus:not(:focus-visible) {
 			outline: none;
 		}
-	}
 
-	.button-label {
-		display: none;
+		span {
+			display: none;
 
-		@media (min-width: $small-breakpoint) {
-			display: inline-flex;
+			@media (min-width: $small-breakpoint) {
+				display: inline-flex;
+			}
 		}
 	}
 </style>
