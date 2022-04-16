@@ -8,7 +8,7 @@
 	import { playIcon, pauseIcon, minusIcon } from '$lib/icons';
 
 	async function fetchDetails() {
-		const response = await fetch(`/podcasts/details/${$selectedPodcastId}`);
+		const response = await fetch(`/api/podcasts/details/${$selectedPodcastId}`);
 		const data = await response.json();
 
 		if (response.ok) {
