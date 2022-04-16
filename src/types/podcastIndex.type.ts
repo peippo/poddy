@@ -144,3 +144,13 @@ export interface EpisodesByFeedId {
 }
 
 export type Episode = EpisodesByFeedId['items'][0];
+
+export interface CategoriesList {
+	status: true | false;
+	feeds: {
+		id: number;
+		name: string;
+	}[];
+	count: number;
+	description: string;
+}

@@ -1,9 +1,10 @@
 <script>
 	import '../app.scss';
-	import { activeEpisode } from '$lib/store';
-	import { logo } from '$lib/icons';
+	import { activeEpisode, isSettingsOpen } from '$lib/store';
+	import { logo, settingsIcon } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
 	import Footer from '$lib/components/footer.svelte';
+	import Settings from '$lib/components/settings.svelte';
 </script>
 
 <header>
@@ -14,7 +15,15 @@
 			<span class="logo-sub">Trending<br /> podcasts</span>
 		</a>
 	</div>
+
+	<button on:click={() => ($isSettingsOpen = !$isSettingsOpen)}>
+		{@html settingsIcon}
+		<span class="button-label">Settings</span>
+	</button>
 </header>
+{#if $isSettingsOpen}
+	<Settings />
+{/if}
 
 <slot />
 
@@ -51,7 +60,7 @@
 		);
 		color: var(--color-black);
 		padding: 0.5rem 0.7rem;
-		z-index: 10;
+		z-index: 15;
 	}
 
 	a {
@@ -81,5 +90,47 @@
 		font-size: 12px;
 		line-height: 1.2;
 		margin-left: 0.5rem;
+	}
+
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: var(--font-family);
+		font-size: 1rem;
+		appearance: none;
+		background-color: transparent;
+		border: 0;
+		color: var(--color-black);
+		border-radius: 6px;
+
+		:global(svg) {
+			@media (min-width: $small-breakpoint) {
+				margin-right: 0.5rem;
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&:focus {
+			outline: 2px dotted var(--color-black);
+			outline-offset: 2px;
+		}
+
+		&:focus:not(:focus-visible) {
+			outline: none;
+		}
+	}
+
+	.button-label {
+		display: none;
+
+		@media (min-width: $small-breakpoint) {
+			display: inline-flex;
+		}
 	}
 </style>
