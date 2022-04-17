@@ -12,6 +12,7 @@
 </script>
 
 <script lang="ts">
+	import { browser } from '$app/env';
 	import { checkIcon } from '$lib/icons';
 
 	import { selectedLanguages, selectedCategories } from '$lib/store';
@@ -53,67 +54,69 @@
 		<h1>Filter settings</h1>
 	</header>
 
-	<div class="content">
-		<fieldset>
-			<legend>Languages</legend>
-			{#each languages as language}
-				<input
-					id={language.code}
-					type="checkbox"
-					checked={$selectedLanguages.includes(language.code)}
-					disabled={language.code === 'en' &&
-						$selectedLanguages.length === 1 &&
-						$selectedLanguages.includes('en')}
-					on:change|preventDefault={() => {
-						if ($selectedLanguages.includes(language.code)) {
-							const newLanguages = $selectedLanguages.filter((code) => code !== language.code);
-							$selectedLanguages = newLanguages;
-						} else {
-							$selectedLanguages = [...$selectedLanguages, language.code];
-						}
-					}}
-				/>
-				<label for={language.code}>{language.label}</label>
-			{/each}
-		</fieldset>
-
-		{#if feeds}
+	{#if browser}
+		<div class="content">
 			<fieldset>
-				<legend>Categories</legend>
-				<input
-					on:change|preventDefault={() => ($selectedCategories = [])}
-					id="all-categories"
-					type="checkbox"
-					checked={$selectedCategories.length === 0}
-					disabled={$selectedCategories.length === 0}
-				/>
-				<label for="all-categories">All categories</label>
-
-				{#each feeds as feed}
+				<legend>Languages</legend>
+				{#each languages as language}
 					<input
-						id={feed.name}
+						id={language.code}
 						type="checkbox"
-						checked={$selectedCategories.includes(feed.id)}
+						checked={$selectedLanguages.includes(language.code)}
+						disabled={language.code === 'en' &&
+							$selectedLanguages.length === 1 &&
+							$selectedLanguages.includes('en')}
 						on:change|preventDefault={() => {
-							if ($selectedCategories.includes(feed.id)) {
-								const newCategories = $selectedCategories.filter((id) => id !== feed.id);
-								$selectedCategories = newCategories;
+							if ($selectedLanguages.includes(language.code)) {
+								const newLanguages = $selectedLanguages.filter((code) => code !== language.code);
+								$selectedLanguages = newLanguages;
 							} else {
-								$selectedCategories = [...$selectedCategories, feed.id];
+								$selectedLanguages = [...$selectedLanguages, language.code];
 							}
 						}}
 					/>
-					<label for={feed.name}>
-						{feed.name}
-					</label>
+					<label for={language.code}>{language.label}</label>
 				{/each}
 			</fieldset>
-		{/if}
-		<a class="save-button" href="/">
-			{@html checkIcon}
-			Save settings
-		</a>
-	</div>
+
+			{#if feeds}
+				<fieldset>
+					<legend>Categories</legend>
+					<input
+						on:change|preventDefault={() => ($selectedCategories = [])}
+						id="all-categories"
+						type="checkbox"
+						checked={$selectedCategories.length === 0}
+						disabled={$selectedCategories.length === 0}
+					/>
+					<label for="all-categories">All categories</label>
+
+					{#each feeds as feed}
+						<input
+							id={feed.name}
+							type="checkbox"
+							checked={$selectedCategories.includes(feed.id)}
+							on:change|preventDefault={() => {
+								if ($selectedCategories.includes(feed.id)) {
+									const newCategories = $selectedCategories.filter((id) => id !== feed.id);
+									$selectedCategories = newCategories;
+								} else {
+									$selectedCategories = [...$selectedCategories, feed.id];
+								}
+							}}
+						/>
+						<label for={feed.name}>
+							{feed.name}
+						</label>
+					{/each}
+				</fieldset>
+			{/if}
+			<a class="save-button" href="/">
+				{@html checkIcon}
+				Save settings
+			</a>
+		</div>
+	{/if}
 </main>
 
 <style lang="scss">
