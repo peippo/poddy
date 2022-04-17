@@ -25,12 +25,13 @@
 
 	import PodcastRowOpen from '$lib/components/podcastRowOpen.svelte';
 	import PodcastRowClosed from '$lib/components/podcastRowClosed.svelte';
+	import NoResults from '$lib/components/noResults.svelte';
 
 	export let data: TrendingPodcasts;
 	$: feeds = data?.feeds;
 </script>
 
-{#if feeds}
+{#if feeds.length > 0}
 	{#each feeds as feed}
 		{#if feed.id === $selectedPodcastId}
 			<PodcastRowOpen />
@@ -38,4 +39,6 @@
 			<PodcastRowClosed {feed} />
 		{/if}
 	{/each}
+{:else}
+	<NoResults />
 {/if}
