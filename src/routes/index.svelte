@@ -1,10 +1,11 @@
 <script lang="ts" context="module">
-	import { selectedLanguages, selectedCategories } from '$lib/store';
 	import { get } from 'svelte/store';
+	import { browser } from '$app/env';
+	import { selectedLanguages, selectedCategories } from '$lib/store';
 
 	export async function load({ fetch }) {
-		const languages = get(selectedLanguages).join(',');
-		const categories = get(selectedCategories).join(',');
+		const languages = browser ? get(selectedLanguages).join(',') : '';
+		const categories = browser ? get(selectedCategories).join(',') : '';
 
 		const response = await fetch(
 			`/api/trending/__data.json?lang=${languages}&cat=${categories}`
