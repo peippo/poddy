@@ -8,7 +8,9 @@
 		{@html logoOutlineSad}
 		<div class="column">
 			<h1>Sorry, no trending podcasts found!</h1>
-			<p>Adjust <a href="/settings">filter settings</a> or try this random episode</p>
+			<p>
+				Adjust <a href="/settings" sveltekit:prefetch>filter settings</a> or try this random episode
+			</p>
 			<RandomEpisode />
 		</div>
 	</header>

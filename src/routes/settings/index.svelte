@@ -111,7 +111,7 @@
 					{/each}
 				</fieldset>
 			{/if}
-			<a class="save-button" href="/">
+			<a class="save-button" href="/" sveltekit:prefetch>
 				{@html checkIcon}
 				Save settings
 			</a>

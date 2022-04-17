@@ -29,7 +29,7 @@
 </script>
 
 <div class="back-bar">
-	<a class="back-link" href="/">
+	<a class="back-link" href="/" sveltekit:prefetch>
 		{@html backIcon}
 		<span class="screen-reader-text">Back to listing</span>
 	</a>

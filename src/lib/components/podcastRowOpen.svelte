@@ -75,7 +75,7 @@
 								</li>
 							{/each}
 						</ul>
-						<a href="/episodes/{details.id}">View all episodes</a>
+						<a href="/episodes/{details.id}" sveltekit:prefetch>View all episodes</a>
 					</div>
 				</div>
 				<div class="categories" in:fly|local={{ y: -15, duration: 500, delay: 400 }}>
