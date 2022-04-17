@@ -18,7 +18,7 @@
 	import { selectedLanguages, selectedCategories } from '$lib/store';
 	import type { CategoriesList } from 'src/types/podcastIndex.type';
 
-	const languages = [
+	const languages: { label: string; code: string }[] = [
 		{ label: 'English', code: 'en' },
 		{ label: 'Chinese', code: 'zh' },
 		{ label: 'Danish', code: 'da' },

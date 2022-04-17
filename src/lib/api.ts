@@ -19,7 +19,7 @@ const getHeaders = () => {
 	};
 };
 
-async function send({ method, path }) {
+async function send({ method, path }: { method: string; path: string }) {
 	const options = { method, headers: getHeaders() };
 
 	return fetch(`${API_BASE_URL}/${path}`, options)
@@ -33,6 +33,6 @@ async function send({ method, path }) {
 		});
 }
 
-export function get(path) {
+export function get(path: string) {
 	return send({ method: 'GET', path });
 }
