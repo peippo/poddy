@@ -1,17 +1,30 @@
-<script>
+<script context="module" lang="ts">
+	export async function load({ url }) {
+		return {
+			props: {
+				key: url.pathname
+			}
+		};
+	}
+</script>
+
+<script lang="ts">
 	import '../app.scss';
 	import { page } from '$app/stores';
 	import { activeEpisode } from '$lib/store';
+	import { fade } from 'svelte/transition';
 	import { logo, settingsIcon } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
 	import Footer from '$lib/components/footer.svelte';
+
+	export let key: string;
 
 	$: isSettingsActive = $page.routeId === 'settings';
 </script>
 
 <header>
 	<div class="logo">
-		<a href="/">
+		<a href="/" sveltekit:prefetch>
 			{@html logo}
 			<h1>poddy</h1>
 			<span class="logo-sub">Trending<br /> podcasts</span>
@@ -28,7 +41,11 @@
 	</a>
 </header>
 
-<slot />
+{#key key}
+	<div class="wrapper" in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
+		<slot />
+	</div>
+{/key}
 
 <Footer />
 
