@@ -1,9 +1,12 @@
 <script>
 	import '../app.scss';
+	import { page } from '$app/stores';
 	import { activeEpisode } from '$lib/store';
 	import { logo, settingsIcon } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
 	import Footer from '$lib/components/footer.svelte';
+
+	$: isSettingsActive = $page.routeId === 'settings';
 </script>
 
 <header>
@@ -15,7 +18,11 @@
 		</a>
 	</div>
 
-	<a class="settings-link" href="/settings">
+	<a
+		class="settings-link"
+		href={isSettingsActive ? `/` : `/settings`}
+		class:active={isSettingsActive}
+	>
 		{@html settingsIcon}
 		<span>Settings</span>
 	</a>
@@ -99,12 +106,16 @@
 		border: 0;
 		color: var(--color-black);
 		border-radius: 6px;
+		padding: 0.5rem 1rem;
+
+		&.active {
+			background-color: var(--color-light-gray);
+			color: var(--color-black);
+		}
 
 		:global(svg) {
 			@media (min-width: $small-breakpoint) {
 				margin-right: 0.5rem;
-				width: 24px;
-				height: 24px;
 			}
 		}
 

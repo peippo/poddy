@@ -49,88 +49,105 @@
 </script>
 
 <main>
-	<h2 class="screen-reader-text">Filter settings</h2>
+	<header>
+		<h1>Filter settings</h1>
+	</header>
 
-	<h3>Languages</h3>
-	<div class="list">
-		{#each languages as language}
-			<input
-				id={language.code}
-				type="checkbox"
-				checked={$selectedLanguages.includes(language.code)}
-				disabled={language.code === 'en' &&
-					$selectedLanguages.length === 1 &&
-					$selectedLanguages.includes('en')}
-				on:change={() => {
-					if ($selectedLanguages.includes(language.code)) {
-						const newLanguages = $selectedLanguages.filter((code) => code !== language.code);
-						$selectedLanguages = newLanguages;
-					} else {
-						$selectedLanguages = [...$selectedLanguages, language.code];
-					}
-				}}
-			/>
-			<label for={language.code}>{language.label}</label>
-		{/each}
-	</div>
-
-	<h3 class="top-margin">Categories</h3>
-	{#if feeds}
-		<div class="list">
-			<input
-				on:change|preventDefault={() => ($selectedCategories = [])}
-				id="all-categories"
-				type="checkbox"
-				checked={$selectedCategories.length === 0}
-				disabled={$selectedCategories.length === 0}
-			/>
-			<label for="all-categories">All categories</label>
-
-			{#each feeds as feed}
+	<div class="content">
+		<fieldset>
+			<legend>Languages</legend>
+			{#each languages as language}
 				<input
-					id={feed.name}
+					id={language.code}
 					type="checkbox"
-					checked={$selectedCategories.includes(feed.id)}
-					on:change={() => {
-						if ($selectedCategories.includes(feed.id)) {
-							const newCategories = $selectedCategories.filter((id) => id !== feed.id);
-							$selectedCategories = newCategories;
+					checked={$selectedLanguages.includes(language.code)}
+					disabled={language.code === 'en' &&
+						$selectedLanguages.length === 1 &&
+						$selectedLanguages.includes('en')}
+					on:change|preventDefault={() => {
+						if ($selectedLanguages.includes(language.code)) {
+							const newLanguages = $selectedLanguages.filter((code) => code !== language.code);
+							$selectedLanguages = newLanguages;
 						} else {
-							$selectedCategories = [...$selectedCategories, feed.id];
+							$selectedLanguages = [...$selectedLanguages, language.code];
 						}
 					}}
 				/>
-				<label for={feed.name}>
-					{feed.name}
-				</label>
+				<label for={language.code}>{language.label}</label>
 			{/each}
-		</div>
-	{/if}
-	<a class="save-button" href="/">
-		{@html checkIcon}
-		Save settings
-	</a>
+		</fieldset>
+
+		{#if feeds}
+			<fieldset>
+				<legend>Categories</legend>
+				<input
+					on:change|preventDefault={() => ($selectedCategories = [])}
+					id="all-categories"
+					type="checkbox"
+					checked={$selectedCategories.length === 0}
+					disabled={$selectedCategories.length === 0}
+				/>
+				<label for="all-categories">All categories</label>
+
+				{#each feeds as feed}
+					<input
+						id={feed.name}
+						type="checkbox"
+						checked={$selectedCategories.includes(feed.id)}
+						on:change|preventDefault={() => {
+							if ($selectedCategories.includes(feed.id)) {
+								const newCategories = $selectedCategories.filter((id) => id !== feed.id);
+								$selectedCategories = newCategories;
+							} else {
+								$selectedCategories = [...$selectedCategories, feed.id];
+							}
+						}}
+					/>
+					<label for={feed.name}>
+						{feed.name}
+					</label>
+				{/each}
+			</fieldset>
+		{/if}
+		<a class="save-button" href="/">
+			{@html checkIcon}
+			Save settings
+		</a>
+	</div>
 </main>
 
 <style lang="scss">
-	main {
+	header {
+		padding: 1rem 2rem 0.5rem;
+		display: flex;
+		align-items: flex-start;
+		align-items: center;
+		background-color: #161617;
+		border-bottom: 1px solid var(--color-dark-gray);
+		z-index: 5;
+	}
+
+	h1 {
+		margin: 0;
+	}
+
+	.content {
 		padding: 2rem;
 	}
 
-	.list {
+	fieldset {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		margin: 0 0 2rem 0;
+		padding: 0;
+		border: 0;
 	}
 
-	h3 {
+	legend {
 		color: var(--color-light-gray);
 		font-size: 1rem;
-		margin-top: 0;
-	}
-
-	.top-margin {
-		margin-top: 2rem;
+		margin: 0 0 0.5rem 0;
 	}
 
 	label {
@@ -180,7 +197,7 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 3rem;
+		margin-top: 1rem;
 		font-size: 1.125rem;
 		padding: 0.5rem 1rem;
 		background-color: #fff;
