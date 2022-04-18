@@ -55,10 +55,10 @@
 {#key key}
 	<div class="wrapper" in:fade={{ duration: 300, delay: 300 }} out:fade={{ duration: 300 }}>
 		<slot />
+
+		<Footer />
 	</div>
 {/key}
-
-<Footer />
 
 {#if $activeEpisode}
 	<Player episode={$activeEpisode} />

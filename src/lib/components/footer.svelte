@@ -1,9 +1,10 @@
 <script>
+	import { fade } from 'svelte/transition';
 	import { logoOutline } from '$lib/icons';
 	import { activeEpisode } from '$lib/store';
 </script>
 
-<footer class:extra-bottom-padding={$activeEpisode}>
+<footer class:extra-bottom-padding={$activeEpisode} in:fade={{ duration: 1000, delay: 1000 }}>
 	{@html logoOutline}
 	<p>
 		<span class="light">poddy</span> [<strong>pod</strong>-ee] a hand-fed newborn lamb
