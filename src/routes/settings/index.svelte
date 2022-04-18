@@ -170,6 +170,8 @@
 		appearance: none;
 		margin: 0;
 		background-color: transparent;
+		opacity: 0;
+		z-index: -1;
 
 		&:disabled + label:hover {
 			cursor: not-allowed;

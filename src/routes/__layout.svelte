@@ -26,8 +26,11 @@
 	<div class="logo">
 		<a href="/" sveltekit:prefetch>
 			{@html logo}
-			<h1>poddy</h1>
-			<span class="logo-sub">Trending<br /> podcasts</span>
+			<h1>
+				poddy<span class="screen-reader-text">: </span><span class="logo-sub">
+					Trending<br /> podcasts</span
+				>
+			</h1>
 		</a>
 	</div>
 
@@ -79,8 +82,12 @@
 			var(--color-blue-gray)
 		);
 		color: var(--color-black);
-		padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+		padding: 0.5rem 0.75rem;
 		z-index: 15;
+	}
+
+	h1 {
+		font-weight: 700;
 	}
 
 	a {
@@ -106,10 +113,13 @@
 
 	.logo-sub {
 		color: var(--color-light-gray);
+		position: relative;
 		display: inline-block;
 		font-size: 12px;
+		top: 2px;
 		line-height: 1.2;
 		margin-left: 0.5rem;
+		font-weight: 400;
 	}
 
 	.settings-link {

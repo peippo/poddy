@@ -39,6 +39,7 @@ body {
 
 h1 {
 	font-size: 1.2rem;
+	font-weight: 400;
 
 	@media (min-width: $small-breakpoint) {
 		font-size: 1.4rem;
@@ -51,6 +52,7 @@ h1 {
 
 h2 {
 	font-size: 1.2rem;
+	font-weight: 400;
 
 	@media (min-width: $small-breakpoint) {
 		font-size: 1.25rem;
