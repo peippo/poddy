@@ -51,8 +51,20 @@
 		transition: color 0.2s ease-in-out;
 
 		&:hover {
-			color: var(--color-dark-gray);
 			cursor: pointer;
+
+			:global(svg) {
+				animation: spin 0.5s;
+			}
+		}
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(90deg);
 		}
 	}
 

@@ -51,7 +51,7 @@
 
 	.content {
 		position: relative;
-		padding: 1rem 2rem;
+		padding: 1.5rem 2rem;
 		width: 100%;
 
 		&:after {
