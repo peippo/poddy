@@ -6,6 +6,7 @@
 	import Categories from '$lib/components/categories.svelte';
 	import { handleLoadEpisode } from '$lib/components/player.svelte';
 	import { playIcon, pauseIcon, minusIcon } from '$lib/icons';
+	import FavoriteToggle from './favoriteToggle.svelte';
 
 	async function fetchDetails() {
 		const response = await fetch(`/api/podcasts/details/${$selectedPodcastId}`);
@@ -31,7 +32,10 @@
 		</button>
 		<div class="content">
 			<header in:fly|local={{ y: -15, duration: 500 }}>
-				<h2>{details.title}</h2>
+				<div class="heading-row">
+					<h2>{details.title}</h2>
+					<FavoriteToggle id={details.id} />
+				</div>
 				{#if details.author && details.author !== details.title}
 					<span class="author">{details.author}</span>
 				{/if}
@@ -134,6 +138,20 @@
 	.content {
 		padding: 2rem;
 		width: calc(100% - var(--row-button-width));
+	}
+
+	.heading-row {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+
+		:global(svg) {
+			@media (min-width: $medium-breakpoint) {
+				width: 32px;
+				height: 32px;
+				align-items: center;
+			}
+		}
 	}
 
 	.author {

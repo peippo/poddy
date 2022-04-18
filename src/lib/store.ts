@@ -11,9 +11,12 @@ interface ActiveEpisode {
 
 const storedLanguages = JSON.parse(browser && localStorage.getItem('selectedLanguages')) || ['en'];
 const storedCategories = JSON.parse(browser && localStorage.getItem('selectedCategories')) || [];
+const storedFavoritePodcasts =
+	JSON.parse(browser && localStorage.getItem('favoritePodcasts')) || [];
 
 export const selectedLanguages = writable<Array<string>>(browser && storedLanguages);
 export const selectedCategories = writable<Array<number>>(browser && storedCategories);
+export const favoritePodcasts = writable<Array<number>>(browser && storedFavoritePodcasts);
 
 selectedLanguages.subscribe(
 	(value) => browser && (localStorage.selectedLanguages = JSON.stringify(value))
@@ -21,6 +24,10 @@ selectedLanguages.subscribe(
 
 selectedCategories.subscribe(
 	(value) => browser && (localStorage.selectedCategories = JSON.stringify(value))
+);
+
+favoritePodcasts.subscribe(
+	(value) => browser && (localStorage.favoritePodcasts = JSON.stringify(value))
 );
 
 export const selectedPodcastId = writable<number>(null);

@@ -13,12 +13,13 @@
 	import { page } from '$app/stores';
 	import { activeEpisode } from '$lib/store';
 	import { fade } from 'svelte/transition';
-	import { logo, settingsIcon } from '$lib/icons';
+	import { logo, settingsIcon, starSolid } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
 	import Footer from '$lib/components/footer.svelte';
 
 	export let key: string;
 
+	$: isFavoritesActive = $page.routeId === 'favorites';
 	$: isSettingsActive = $page.routeId === 'settings';
 </script>
 
@@ -34,14 +35,21 @@
 		</a>
 	</div>
 
-	<a
-		class="settings-link"
-		href={isSettingsActive ? `/` : `/settings`}
-		class:active={isSettingsActive}
-	>
-		{@html settingsIcon}
-		<span>Settings</span>
-	</a>
+	<nav>
+		<a
+			class="nav-link"
+			href={isFavoritesActive ? `/` : `/favorites`}
+			class:active={isFavoritesActive}
+		>
+			{@html starSolid}
+			<span>Favorites</span>
+		</a>
+
+		<a class="nav-link" href={isSettingsActive ? `/` : `/settings`} class:active={isSettingsActive}>
+			{@html settingsIcon}
+			<span>Settings</span>
+		</a>
+	</nav>
 </header>
 
 {#key key}
@@ -90,6 +98,10 @@
 		font-weight: 700;
 	}
 
+	nav {
+		display: flex;
+	}
+
 	a {
 		display: flex;
 		align-items: center;
@@ -122,7 +134,7 @@
 		font-weight: 400;
 	}
 
-	.settings-link {
+	.nav-link {
 		display: flex;
 		justify-content: center;
 		align-items: center;
