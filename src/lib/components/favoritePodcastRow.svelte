@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
 	import { activeEpisode, isPlaying } from '$lib/store';
 	import { formatSeconds, stripTags } from '$lib/utils';
 	import Categories from '$lib/components/categories.svelte';
@@ -23,7 +24,7 @@
 </script>
 
 {#await promise then { details, episodes }}
-	<article>
+	<article out:fly={{ y: 25, duration: 500 }}>
 		<div class="content">
 			<header>
 				<div class="heading-row">
