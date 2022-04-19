@@ -105,7 +105,7 @@
 
 	.content {
 		padding: 2rem;
-		width: calc(100% - var(--row-button-width));
+		width: 100%;
 	}
 
 	.heading-row {
