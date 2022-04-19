@@ -11,7 +11,7 @@
 <script lang="ts">
 	import '../app.scss';
 	import { page } from '$app/stores';
-	import { activeEpisode } from '$lib/store';
+	import { activeEpisode, isPlaying } from '$lib/store';
 	import { fade } from 'svelte/transition';
 	import { logo, settingsIcon, starSolid } from '$lib/icons';
 	import Player from '$lib/components/player.svelte';
@@ -23,13 +23,23 @@
 	$: isSettingsActive = $page.routeId === 'settings';
 </script>
 
+<svelte:head>
+	{#if $activeEpisode && $isPlaying}
+		<title>
+			► {$activeEpisode.podcastTitle} - {$activeEpisode.episodeTitle}
+		</title>
+	{:else}
+		<title>poddy: trending podcasts</title>
+	{/if}
+</svelte:head>
+
 <header>
 	<div class="logo">
 		<a href="/" sveltekit:prefetch>
 			{@html logo}
 			<h1>
 				poddy<span class="screen-reader-text">: </span><span class="logo-sub">
-					Trending<br /> podcasts</span
+					trending<br /> podcasts</span
 				>
 			</h1>
 		</a>
