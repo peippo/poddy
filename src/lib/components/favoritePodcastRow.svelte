@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import { beforeNavigate } from '$app/navigation';
 	import { activeEpisode, isPlaying } from '$lib/store';
 	import { formatSeconds, stripTags } from '$lib/utils';
 	import Categories from '$lib/components/categories.svelte';
@@ -21,10 +22,16 @@
 	}
 
 	const promise = fetchDetails();
+
+	let isNavTransition = false;
+
+	beforeNavigate(() => {
+		isNavTransition = true;
+	});
 </script>
 
 {#await promise then { details, episodes }}
-	<article out:fly={{ y: 25, duration: 500 }}>
+	<article out:fly={{ y: isNavTransition ? 0 : 25, duration: isNavTransition ? 0 : 500 }}>
 		<div class="content">
 			<header>
 				<div class="heading-row">
